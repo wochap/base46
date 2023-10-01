@@ -206,7 +206,7 @@ M.minimal = {
   },
 
   St_gitIcons = {
-    fg = generate_color(light_grey, 8),
+    fg = light_grey,
     bg = "none",
     bold = true,
   },
