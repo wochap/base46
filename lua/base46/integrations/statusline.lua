@@ -1,4 +1,6 @@
-local colors = require("base46").get_theme_tb "base_30"
+local get_theme_tb = require("base46").get_theme_tb
+local theme_type = get_theme_tb "type"
+local colors = get_theme_tb "base_30"
 local generate_color = require("base46.colors").change_hex_lightness
 local merge_tb = vim.tbl_deep_extend
 
@@ -8,14 +10,10 @@ local statusline_theme = config.statusline.theme
 
 -- default values from the colors palette
 local statusline_bg = colors.statusline_bg
-local light_grey = colors.light_grey
+local light_grey
 
-if statusline_theme == "vscode" then
-  statusline_bg = generate_color(colors.statusline_bg, 1)
-  light_grey = generate_color(colors.light_grey, 20)
-elseif statusline_theme == "vscode_colored" then
-  statusline_bg = generate_color(colors.statusline_bg, 1)
-  light_grey = generate_color(colors.light_grey, 25)
+if statusline_theme == "vscode" or statusline_theme == "vscode_colored" then
+  light_grey = generate_color(colors.light_grey, theme_type == "dark" and 15 or -15)
 end
 
 if config.transparency then
