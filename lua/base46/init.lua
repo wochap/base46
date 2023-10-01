@@ -164,6 +164,11 @@ M.load_all_highlights = function()
   for _, file in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
     dofile(vim.g.base46_cache .. file)
   end
+
+  -- update blankline
+  pcall(function()
+    require("ibl").update()
+  end)
 end
 
 M.override_theme = function(default_theme, theme_name)
