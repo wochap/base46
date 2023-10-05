@@ -10,10 +10,10 @@ local statusline_theme = config.statusline.theme
 
 -- default values from the colors palette
 local statusline_bg = colors.statusline_bg
-local light_grey
+local light_grey = generate_color(colors.light_grey, 8)
 
-if statusline_theme == "vscode" or statusline_theme == "vscode_colored" then
-  light_grey = generate_color(colors.light_grey, theme_type == "dark" and 15 or -15)
+if (statusline_theme == "vscode" or statusline_theme == "vscode_colored") and theme_type == "light" then
+  light_grey = generate_color(colors.light_grey, -15)
 end
 
 if config.transparency then

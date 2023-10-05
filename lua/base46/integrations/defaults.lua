@@ -33,6 +33,8 @@ local defaults = {
     bg = theme.base00,
   },
 
+  DevIconDefault = { fg = colors.red },
+
   Bold = {
     bold = true,
   },
