@@ -8,6 +8,10 @@ local merge_tb = vim.tbl_deep_extend
 local config = require("core.utils").load_config().ui
 local statusline_theme = config.statusline.theme
 
+if statusline_theme == "custom" then
+  return {}
+end
+
 -- default values from the colors palette
 local statusline_bg = colors.statusline_bg
 local light_grey = generate_color(colors.light_grey, 8)
