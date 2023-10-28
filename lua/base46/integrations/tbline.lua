@@ -85,7 +85,7 @@ local hlgroups_glassy = {
   "TbLineBufOnClose",
   "TbLineBufOffClose",
   "TbLineBufOnModified",
-  "TbLineBufOffModified"
+  "TbLineBufOffModified",
 }
 
 if config.transparency then

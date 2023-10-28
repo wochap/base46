@@ -43,26 +43,12 @@ M.turn_str_to_color = function(tb)
   return copy
 end
 
-M.extend_default_hl = function(highlights)
+M.extend_default_hl = function(highlights, integration_name)
   local polish_hl = M.get_theme_tb "polish_hl"
-  local add_hl = M.get_theme_tb "add_hl"
 
   -- polish themes
-  if polish_hl then
-    for key, value in pairs(polish_hl) do
-      if highlights[key] then
-        highlights[key] = M.merge_tb(highlights[key], value)
-      end
-    end
-  end
-
-  -- add new hl
-  if add_hl then
-    for key, value in pairs(add_hl) do
-      if not highlights[key] and type(value) == "table" then
-        highlights[key] = value
-      end
-    end
+  if polish_hl[integration_name] then
+    highlights = M.merge_tb(highlights, polish_hl[integration_name])
   end
 
   -- transparency
@@ -85,12 +71,13 @@ M.extend_default_hl = function(highlights)
       end
     end
   end
+
+  return highlights
 end
 
-M.load_integrationTB = function(group)
-  group = require("base46.integrations." .. group)
-  M.extend_default_hl(group)
-  return group
+M.load_integrationTB = function(name)
+  local highlights = require("base46.integrations." .. name)
+  return M.extend_default_hl(highlights, name)
 end
 
 -- convert table into string
