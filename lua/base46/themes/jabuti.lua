@@ -1,5 +1,5 @@
--- Credits to original author @redyf
--- Improved by @siduck
+-- Credits to original author @notusknot
+-- Ported by @redyf & improved by @siduck
 
 local M = {}
 
