@@ -55,7 +55,7 @@ M.base_16 = {
   base0A = M.base_30.cream,
   base0B = M.base_30.green,
   base0C = M.base_30.teal,
-  base0D = M.base_30.indigo,
+  base0D = M.base_30.nord_blue,
   base0E = M.base_30.purple,
   base0F = M.base_30.light_grey,
 }
