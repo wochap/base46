@@ -160,8 +160,7 @@ local defaults = {
   },
 
   ColorColumn = {
-    bg = theme.base01,
-    sp = "none",
+    bg = colors.black2,
   },
 
   CursorColumn = {
@@ -170,8 +169,7 @@ local defaults = {
   },
 
   CursorLine = {
-    bg = "none",
-    sp = "none",
+    bg = colors.black2,
   },
 
   QuickFixLine = {
