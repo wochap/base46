@@ -5,7 +5,7 @@ local base46_path = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:
 
 local function is_in_list(str, list)
   for _, value in ipairs(list) do
-    if value ~= str then
+    if value == str then
       return true
     end
   end
