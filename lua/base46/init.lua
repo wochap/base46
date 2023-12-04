@@ -3,6 +3,15 @@ local g = vim.g
 local config = require("core.utils").load_config()
 local base46_path = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h")
 
+local function is_in_list(str, list)
+  for _, value in ipairs(list) do
+    if value == str then
+      return true
+    end
+  end
+  return false
+end
+
 M.get_theme_tb = function(type)
   local default_path = "base46.themes." .. g.nvchad_theme
   local user_path = "custom.themes." .. g.nvchad_theme
@@ -139,11 +148,16 @@ M.compile = function()
   -- All integration modules, each file returns a table
   local hl_files = base46_path .. "/integrations"
 
+  -- NOTE: custom config
+  local exclude_integrations = config.ui.exclude_integrations or {}
+
   for _, file in ipairs(vim.fn.readdir(hl_files)) do
-    -- skip caching some files
-    if file ~= "statusline" or file ~= "treesitter" then
-      local filename = vim.fn.fnamemodify(file, ":r")
-      M.saveStr_to_cache(filename, M.load_highlight(filename))
+    if not is_in_list(file, exclude_integrations) then
+      -- skip caching some files
+      if file ~= "statusline" or file ~= "treesitter" then
+        local filename = vim.fn.fnamemodify(file, ":r")
+        M.saveStr_to_cache(filename, M.load_highlight(filename))
+      end
     end
   end
 
