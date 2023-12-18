@@ -240,6 +240,8 @@ local defaults = {
   LazyReasonImport = { fg = colors.white },
   LazyProgressDone = { fg = colors.green },
 }
+-- HACK: prevent conflicts between nvchad and other colorschemes
+defaults = {}
 
 -- merge statusilne & hl_add tables!
 local merge_tb = require("base46").merge_tb
